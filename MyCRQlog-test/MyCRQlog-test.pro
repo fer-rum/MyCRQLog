@@ -1,15 +1,18 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2017-08-24T18:21:35
+# Project created by QtCreator 2017-08-28T18:58:21
 #
 #-------------------------------------------------
 
+QT       += testlib
+
 QT       -= gui
 
-TARGET = MyCRQlog
-TEMPLATE = lib
+TARGET = LogManagerTest
+CONFIG   += console testcase
+CONFIG   -= app_bundle
 
-DEFINES += MYCRQLOG_LIBRARY
+TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked as deprecated (the exact warnings
@@ -22,17 +25,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+
 SOURCES += \
-    Logger.cpp \
-    LogManager.cpp \
-    LogMessage.cpp \
-    LogRenderer.cpp \
-    Severity.cpp
+        LogManagerTest.cpp \
+  #  main.cpp
+
+DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
 HEADERS += \
-        mycrqlog_global.h \
-    Logger.h \
-    LogManager.h \
-    LogMessage.h \
-    LogRenderer.h \
-    Severity.h
+    LogManagerTest.h
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../MyCRQlog/release/ -lMyCRQlog
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../MyCRQlog/debug/ -lMyCRQlog
+else:unix: LIBS += -L$$OUT_PWD/../MyCRQlog/ -lMyCRQlog
+
+INCLUDEPATH += $$PWD/../MyCRQlog
+DEPENDPATH += $$PWD/../MyCRQlog
