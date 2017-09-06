@@ -11,5 +11,5 @@ public:
     LogManagerTest();
 
 private slots:
-    void testHasInstance();
+    void testDefaultInstance();
 };

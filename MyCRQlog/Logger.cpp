@@ -32,6 +32,12 @@ Logger::unregisterRenderer(LogRenderer::Pointer toUnregister) {
 }
 
 void
+Logger::unregisterAllRenderers() {
+
+    m_renderers.clear();
+}
+
+void
 Logger::log(QString const& messageText, Severity::Value severity){
 
     // Step 1) Create the message

@@ -8,7 +8,7 @@ QT       += testlib
 
 QT       -= gui
 
-TARGET = LogManagerTest
+TARGET = MyCRQlog-test
 CONFIG   += console testcase
 CONFIG   -= app_bundle
 
@@ -27,8 +27,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        LogManagerTest.cpp \
-  #  main.cpp
+    LogManagerTest.cpp \
+    main.cpp
 
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
 

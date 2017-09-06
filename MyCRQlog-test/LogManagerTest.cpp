@@ -1,12 +1,20 @@
 #include <LogManagerTest.h>
 
+#include <LogManager.h>
+
 #include <QString>
 
-LogManagerTest::LogManagerTest() : QObject()
-{
-}
+using namespace mycrqlog;
 
-void LogManagerTest::testHasInstance()
-{
-    QFAIL("Test not implemented");
+LogManagerTest::LogManagerTest() :
+    QObject()
+{}
+
+void LogManagerTest::testDefaultInstance() {
+
+    LogManager uut = LogManager::instance();
+
+    Q_ASSERT(uut.loggers().isEmpty());
+    Q_ASSERT(uut.renderers().isEmpty());
+
 }

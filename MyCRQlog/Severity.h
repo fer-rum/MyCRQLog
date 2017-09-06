@@ -9,7 +9,6 @@
 
 namespace mycrqlog {
 
-
 class MYCRQLOGSHARED_EXPORT Severity {
 
     Q_GADGET
@@ -28,8 +27,8 @@ public:
     Q_ENUM(Value)
 
     /*
-     * (1) NOTE: The number bspace is asymetrical since the negative number
-     * region is one number bigger as 0 is counted towards the positive numbers.
+     * (1) NOTE: The number space is asymetrical since the negative number
+     * region is bigger by one, since 0 is counted towards the positive numbers.
      * For this reason, the lowest number has been chopped of for representing
      * an unknown severity, which might come in handy when attempting to write
      * robust code. As a side effect, the remaining number space is symmetrical

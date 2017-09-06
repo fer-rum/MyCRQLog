@@ -27,6 +27,7 @@ public:
 
     void registerRenderer(LogRenderer::Pointer toRegister);
     void unregisterRenderer(LogRenderer::Pointer toUnregister);
+    void unregisterAllRenderers();
 
     void log(QString const& messageText, Severity::Value severity);
 };

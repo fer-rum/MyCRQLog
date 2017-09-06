@@ -30,6 +30,12 @@ LogManager::createRenderer(Args && ...args) const {
 void
 LogManager::deleteRenderer(LogRenderer::Pointer toDelete) {
 
+    if(!m_renderers.contains(toDelete)){
+        // Renderer not registered with this log manager
+        // Do nothing to avoid side effects
+        return;
+    }
+
     // Unregister this Renderer from all loggers
     for(Logger::Pointer logger : m_loggers){
         logger->unregisterRenderer(toDelete);
@@ -48,4 +54,28 @@ LogManager::createLogger(QString const& id) {
     m_loggers.append(newLogger);
 
     return newLogger;
+}
+
+void
+LogManager::deleteLogger(Logger::Pointer toDelete) {
+
+    if(!m_loggers.contains(toDelete)){
+        // Logger not registered with this log manager
+        // Do nothing to avoid side effects
+        return;
+    }
+
+    toDelete->unregisterAllRenderers();
+
+    m_loggers.removeAll(toDelete);
+}
+
+QList<LogRenderer::Pointer>
+LogManager::renderers() const {
+    return m_renderers;
+}
+
+QList<Logger::Pointer>
+LogManager::loggers() const {
+    return m_loggers;
 }

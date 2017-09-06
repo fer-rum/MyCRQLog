@@ -24,11 +24,19 @@ public:
 
     static LogManager instance();
 
+    // Renderer - related
     template<class RendererSubclass, typename ...Args>
     QSharedPointer<RendererSubclass> createRenderer(Args && ...args) const;
     void deleteRenderer(LogRenderer::Pointer toDelete);
 
+    // Logger - related
     Logger::Pointer createLogger(QString const& id);
+    void deleteLogger(Logger::Pointer toDelete);
+
+    // Getters
+    QList<LogRenderer::Pointer> renderers() const;
+    QList<Logger::Pointer> loggers() const;
+
 };
 
 } // namespace mycrqlog
