@@ -27,7 +27,9 @@ SOURCES += \
     LogManager.cpp \
     LogMessage.cpp \
     LogRenderer.cpp \
-    Severity.cpp
+    Severity.cpp \
+    Configuration.cpp \
+    renderers/ConsoleRenderer.cpp
 
 HEADERS += \
         mycrqlog_global.h \
@@ -35,4 +37,6 @@ HEADERS += \
     LogManager.h \
     LogMessage.h \
     LogRenderer.h \
-    Severity.h
+    Severity.h \
+    Configuration.h \
+    renderers/ConsoleRenderer.h

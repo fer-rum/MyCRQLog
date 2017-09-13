@@ -28,12 +28,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     LogManagerTest.cpp \
-    main.cpp
+    main.cpp \
+    ConsoleRendererTest.cpp
 
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
 HEADERS += \
-    LogManagerTest.h
+    LogManagerTest.h \
+    ConsoleRendererTest.h
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../MyCRQlog/release/ -lMyCRQlog
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../MyCRQlog/debug/ -lMyCRQlog
