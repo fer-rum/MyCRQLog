@@ -40,29 +40,21 @@ Logger::unregisterAllRenderers() {
 void
 Logger::log(QString const& messageText, Severity::Value severity){
 
-    // Step 1) Create the message
-    LogMessage::Pointer newMessage = LogMessage::Pointer::create();
-
-    // Step 2) Write the message text, source and severity
-    newMessage->attachField(LogMessage::FieldName::Message,
-                            QJsonValue(messageText));
-
-    newMessage->attachField(LogMessage::FieldName::Source,
-                            QJsonValue(m_id));
-
-    newMessage->attachField(LogMessage::FieldName::Severity,
-                            QJsonValue(Severity::toString(severity)));
-
-    // Step 3) Acquire a timestamp and put it in the message as well
-    unsigned long timestamp;
+    // Step 1) Acquire a timestamp
+    double timestamp;
     {
         using namespace std::chrono;
-        timestamp = duration_cast<milliseconds>(
-                        steady_clock::now().time_since_epoch()
-                        ).count();
+        timestamp = steady_clock::now().time_since_epoch().count();
     }
-    newMessage->attachField(LogMessage::FieldName::Timestamp,
-                            QJsonValue((qint64)timestamp));
+
+    // Step 2) Create the message
+    LogMessage::Pointer newMessage = LogMessage::Pointer::create();
+
+    // Step 2) Write the message text, timestamp, source and severity
+    newMessage->setText(messageText);
+    newMessage->setSource(m_id);
+    newMessage->setSeverity(severity);
+    newMessage->setTimestamp(timestamp);
 
     // Step 4) Put the message in the History
     m_history.append(newMessage);

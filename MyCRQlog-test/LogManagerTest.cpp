@@ -16,5 +16,4 @@ void LogManagerTest::testDefaultInstance() {
 
     Q_ASSERT(uut.loggers().isEmpty());
     Q_ASSERT(uut.renderers().isEmpty());
-
 }

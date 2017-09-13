@@ -19,7 +19,7 @@ class MYCRQLOGSHARED_EXPORT LogRenderer {
 public:
     using Pointer = QSharedPointer<LogRenderer>;
 
-    virtual void render(LogMessage::Pointer toRender);
+    virtual void render(LogMessage::Pointer toRender) = 0;
 
 };
 
