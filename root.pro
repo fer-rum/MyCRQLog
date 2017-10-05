@@ -4,4 +4,4 @@ SUBDIRS += \
     MyCRQlog \
     MyCRQlog-test
 
-MyCRQlog-lest.depends = MyCRQlog
+MyCRQlog-test.depends = MyCRQlog
